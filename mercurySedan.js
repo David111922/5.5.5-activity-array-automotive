@@ -1,6 +1,7 @@
-//this includes the vehicle class as a module
-const VehicleModule = Require("./vehicleBaseClass")
-class Car extends VehicleModule{
+// //this includes the vehicle class as a module
+const VehicleModule = require('./vehicle').Vehicle
+
+class Car extends VehicleModule {
     constructor(make, model, year, color, mileage) {
     super(make, model, year, color, mileage);
 this.maxPassengers = 5;
@@ -15,42 +16,65 @@ checkService(){
 if (this.mileage > 30000) {
     this.scheduledService = true
     return this.scheduledService;
+    }
 }
-}
+//     else{
+// this.scheduledService = false;
+//  }
+//  return this.scheduledService;
+// }
 
 start() {
 if (this.fuel > 0) {
- console.log("engine has started")
- return this.started = true
+ console.log("engine has started");
+return  this.started = true;
+ 
 }
  else{ 
-console.log("no fuel");
-return this.started = false;
+console.log("No fuel");
+ return this.started = false;
+//  return this.started;help
 
  }
 }
 loadPassenger(num) {
     if (this.passenger < this.maxPassengers) {
-        if ((num + this.passenger) <= this.maxPassengers) {
-            this.passenger += num; // Increment passenger count
+        if (num + this.passenger <= this.maxPassengers) {
+            this.passenger = num; // Increment passenger count
             return this.passenger;               
         } else {
             console.log(this.model + " " + this.make + " does not have enough space to take all passengers.");
         }
-    } else {
+    }
+     else {
         console.log(this.model + " " + this.make + " is full");
     }
 }
+
+// stop() {
+//     console.log("car has stopped")
+//     this.started = false;
+//     return this.started;
+// }
+
 }
 
-let V = new Car('Mercury', 'Cougar', '2002', 'White', 50000);
+let myCar = new Car('Mercury', 'Cougar', '2002', 'White', 50000);
 
-V.start();
-V.loadPassenger(5);
-V.stop();
-V.checkService();
+myCar.start();
+myCar.loadPassenger(5);
+myCar.stop();
+myCar.checkService();
 
-console.log(V);
+console.log(myCar);
+let v = new Car('Cheverolet', 'Silverado', '2005', 'blue', 240000);
+
+v.start();
+v.loadPassenger(5);
+v.stop();
+v.checkService();
+
+console.log();
 
     
 
@@ -70,12 +94,12 @@ console.log(V);
 
 
 
-//TO DO: Creating Instances and Testing Them
+// //TO DO: Creating Instances and Testing Them
 
-//You can use the same instance "v" of the Vehicle class above for the base class.
-
-
+// //You can use the same instance "v" of the Vehicle class above for the base class.
 
 
 
-//Create at least two new instances of the Car class and test them here:
+
+
+// //Create at least two new instances of the Car class and test them here:
